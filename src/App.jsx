@@ -1,7 +1,13 @@
+import { useState } from "react";
+import {QRCodeCanvas} from "qrcode.react";
+import {FiDownload, FiCopy, FiCheck, FiX} from "react-icons/fi";
+import {BsQrCode} from "react-icons/bs";
 
+function SimpleQrGenerator() {
 
-function App() {
-
+  const [inputText, setInputText] = useState("");
+  const [copied, setCopied] = useState(false);
+  
 
   return (
     <>
@@ -17,4 +23,4 @@ function App() {
   )
 }
 
-export default App
+export default SimpleQrGenerator;
