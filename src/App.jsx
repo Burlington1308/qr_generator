@@ -7,7 +7,30 @@ function SimpleQrGenerator() {
 
   const [inputText, setInputText] = useState("");
   const [copied, setCopied] = useState(false);
-  
+
+  const handleDownload = () => {
+    const canvas = document.querySelector("canvas");
+    if(!canvas) return;
+
+    const pngUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // to download image
+    const link = document.createElement("a");  // to download image
+    link.href = pngUrl;
+    link.download = "qr-code.png";
+    link.click();
+  }
+
+  const handleCopy = async () =>{
+    try {
+      await navigator.clipboard.writeText(inputText);
+      setCopied(true);
+    } catch (err) {
+      console.log("Copy Failed", err);
+    }
+  }
+
+  const handleClear = () => {
+    setInputText("");
+  }
 
   return (
     <>
