@@ -23,6 +23,7 @@ function SimpleQrGenerator() {
     try {
       await navigator.clipboard.writeText(inputText);
       setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.log("Copy Failed", err);
     }
